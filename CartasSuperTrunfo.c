@@ -17,8 +17,9 @@ int main() {
     char codigocarta1, codigocarta2;
     char nomecidade1[50], nomecidade2[50]; // Arrays para armazenar strings
     int populacao1, populacao2;
-    float area1, area2, pib1, pib2;
+    float area1, area2, pib1, pib2, dens1, dens2, pibpc1, pibpc2;
     char pontostur1[100], pontostur2[100]; // Arrays para pontos turísticos
+
 
     // **Coletando dados para a primeira cidade**
     printf("Digite a sigla do estado (ex: SP, RJ, MG):\n");
@@ -46,6 +47,14 @@ int main() {
     scanf("%99[^\n]", pontostur1);
     getchar(); 
 
+    dens1 = populacao1 / area1;
+    printf("Densidade populacional: %f\n", dens1);
+
+    pibpc1 = pib1 / populacao1;
+    printf("PIB per capita: %f\n", pibpc1);
+
+   
+
     // **Coletando dados para a segunda cidade**
     printf("\nDigite a sigla do estado da segunda cidade:\n");
     scanf(" %c", &estado2);  
@@ -72,6 +81,12 @@ int main() {
     scanf("%99[^\n]", pontostur2);
     getchar();
 
+    dens2 = populacao2 / area2;
+    printf("Densidade populacional: %f\n", dens2)
+
+    pibpc2 = pib2 / populacao2;
+    printf("PIB per capita: %f\n", pibpc2);
+
     // **Exibir os dados coletados**
     printf("\n=== Carta 1 ===\n");
     printf("Estado: %c\n", estado1);
@@ -81,6 +96,8 @@ int main() {
     printf("Área (km²): %.2f\n", area1);
     printf("PIB: %.2f\n", pib1);
     printf("Pontos turísticos: %s\n", pontostur1);
+    printf("Densidade populacional: %f\n", dens1);
+    printf("PIB per capita: %f\n", pibpc1);
 
     printf("\n=== Carta 2 ===\n");
     printf("Estado: %c\n", estado2);
@@ -90,6 +107,8 @@ int main() {
     printf("Área (km²): %.2f\n", area2);
     printf("PIB: %.2f\n", pib2);
     printf("Pontos turísticos: %s\n", pontostur2);
+    printf("Densidade populacional: %f\n", dens2);
+    printf("PIB per capita: %f\n", pibpc2);
 
     return 0;
 }
