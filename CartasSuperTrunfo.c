@@ -13,28 +13,31 @@
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
 int main() {
-    char estado1, estado2; 
-    char codigocarta1, codigocarta2;
-    char nomecidade1[50], nomecidade2[50]; // Arrays para armazenar strings
-    int populacao1, populacao2, escolha1, escolha2;
-    float area1, area2, pib1, pib2, dens1, dens2, pibpc1, pibpc2;
-    char pontostur1[100], pontostur2[100];
-    
-
+    char estado1[3], estado2[3];   //sigla dos estados
+    char codigocarta1[10], codigocarta2[10]; //codigo das cartas
+    char nomecidade1[100];             // Nome completo da cidade
+    char nomecidade2[100];             // Arrays para armazenar strings
+    int populacao1, populacao2, escolha1, escolha2; // População e escolha
+    float area1, area2, dens1, dens2;  // Área em km² e densidade
+    float pib1, pib2, pibpc1, pibpc2;  // PIB em bilhões e PIB per capita
+    int pontostur1, pontostur2;        // Número de pontos turísticos
+      
     // **Coletando dados para a primeira cidade**
     printf("Digite a sigla do estado (ex: SP, RJ, MG):\n");
-    scanf(" %c", &estado1);  
+    scanf("%2s", estado1);
 
     printf("Digite o código da carta:\n");
-    scanf(" %c", &codigocarta1);
-    getchar(); 
+    scanf("%9s", codigocarta1); // até 9 caracteres + \0
 
-    printf("Nome da primeira cidade:\n");
-    scanf("%49[^\n]", &nomecidade1);
-    getchar(); 
+    getchar(); // limpa o '\n' do buffer antes de fgets
+    printf("Nome da cidade:\n");
+    fgets(nomecidade1, sizeof(nomecidade1), stdin);
+    // Remover o '\n' se estiver presente
+    nomecidade1[strcspn(nomecidade1, "\n")] = '\0';
 
     printf("População da cidade:\n");
     scanf("%d", &populacao1);
+
 
     printf("Digite a área (km²):\n");
     scanf("%f", &area1);
@@ -44,7 +47,7 @@ int main() {
     getchar(); 
 
     printf("Pontos turísticos:\n");
-    scanf("%99[^\n]", pontostur1);
+    scanf("%d", &pontostur1);
     getchar(); 
     
 
@@ -57,18 +60,19 @@ int main() {
    
 
     // **Coletando dados para a segunda cidade**
-    printf("\nDigite a sigla do estado da segunda cidade:\n");
-    scanf(" %c", &estado2);  
+    printf("Digite a sigla do segunda estado (ex: SP, RJ, MG):\n");
+    scanf("%2s", estado1);
 
-    printf("Digite o código da segunda carta:\n");
-    scanf(" %c", &codigocarta2);
-    getchar();
+    printf("Digite o código da carta:\n");
+    scanf("%9s", codigocarta1); // até 9 caracteres + \0
 
-    printf("Nome da segunda cidade:\n");
-    scanf("%49[^\n]", &nomecidade2);
-    getchar();
+    getchar(); // limpa o '\n' do buffer antes de fgets
+    printf("Nome da cidade:\n");
+    fgets(nomecidade2, sizeof(nomecidade2), stdin);
+    // Remover o '\n' se estiver presente
+    nomecidade2[strcspn(nomecidade2, "\n")] = '\0';
 
-    printf("População da segunda cidade:\n");
+    printf("População da cidade:\n");
     scanf("%d", &populacao2);
 
     printf("Digite a área da segunda cidade (km²):\n");
@@ -79,7 +83,7 @@ int main() {
     getchar();
 
     printf("Pontos turísticos da segunda cidade:\n");
-    scanf("%99[^\n]", pontostur2);
+    scanf("%d", &pontostur2);
     getchar();
     
 
@@ -97,7 +101,7 @@ int main() {
     printf("População: %d\n", populacao1);
     printf("Área (km²): %.2f\n", area1);
     printf("PIB: %.2f\n", pib1);
-    printf("Pontos turísticos: %s\n", pontostur1);
+    printf("Pontos turísticos: %d\n", pontostur1);
     printf("Densidade populacional: %f\n", dens1);
     printf("PIB per capita: %f\n", pibpc1);
 
@@ -108,7 +112,7 @@ int main() {
     printf("População: %d\n", populacao2);
     printf("Área (km²): %.2f\n", area2);
     printf("PIB: %.2f\n", pib2);
-    printf("Pontos turísticos: %s\n", pontostur2);
+    printf("Pontos turísticos: %d\n", pontostur2);
     printf("Densidade populacional: %f\n", dens2);
     printf("PIB per capita: %f\n", pibpc2);
 
